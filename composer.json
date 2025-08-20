@@ -1,0 +1,38 @@
+{
+  "name": "sobhansgh/mellat-api",
+  "description": "HiveWeb Mellat payment gateway for API-first Laravel apps (JSON-only).",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Sobhan Ghasemi",
+      "homepage": "https://example.com"
+    }
+  ],
+  "require": {
+    "php": ">=8.1",
+    "ext-soap": "*",
+    "illuminate/support": ">=10.0",
+    "illuminate/http": ">=10.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Sobhansgh\\MellatApi\\": "src/"
+    },
+    "files": [
+      "src/Support/helpers.php"
+    ]
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Sobhansgh\\MellatApi\\MellatApiServiceProvider"
+      ],
+      "aliases": {
+        "MellatApi": "Sobhansgh\\MellatApi\\Facades\\MellatApi"
+      }
+    }
+  },
+  "minimum-stability": "stable",
+  "prefer-stable": true
+}
