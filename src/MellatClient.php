@@ -94,10 +94,10 @@ class MellatClient implements GatewayContract
 
         try {
             $verifyParams = $creds + [
-                'orderId'        => $orderId,
-                'saleOrderId'    => $saleOrderId,
-                'saleReferenceId'=> $saleReferenceId,
-            ];
+                    'orderId'        => $orderId,
+                    'saleOrderId'    => $saleOrderId,
+                    'saleReferenceId'=> $saleReferenceId,
+                ];
             $verifyRes = $this->client()->bpVerifyRequest($verifyParams);
             $verifyCode = (string)($verifyRes->return ?? '');
 
@@ -107,6 +107,7 @@ class MellatClient implements GatewayContract
                     'ok' => false,
                     'status' => TransactionStatus::FAILED->value,
                     'res_code' => $verifyCode,
+                    'amount' => $log->amount,
                 ];
             }
 
@@ -127,6 +128,7 @@ class MellatClient implements GatewayContract
                 'order_id' => $orderId,
                 'sale_order_id' => $saleOrderId,
                 'sale_reference_id' => $saleReferenceId,
+                'amount' => $log->amount,
             ];
         } catch (\Throwable $e) {
             $log->update(['status' => TransactionStatus::FAILED->value, 'meta' => ['error' => $e->getMessage()]]);

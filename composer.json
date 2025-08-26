@@ -1,5 +1,6 @@
 {
   "name": "sobhansgh/mellat-api",
+  "version": "1.0.0",
   "description": "HiveWeb Mellat payment gateway for API-first Laravel apps (JSON-only).",
   "type": "library",
   "license": "MIT",
